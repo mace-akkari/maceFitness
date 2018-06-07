@@ -12,8 +12,9 @@ app.get('/contacts', function(req, res) {
 });
 
 app.get('/timeTable', function(req, res) {
-    res.send('Time table coming soon!');
+    res.render('timeTable');
 });
 
+app.use('/stylesheets', express.static('stylesheets'));
 
 app.listen(8080);
