@@ -4,7 +4,7 @@ const app = express();
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
-    res.send('Welcome to the home page!');
+    res.render('index');
 });
 
 app.get('/timeTable', function(req, res) {
