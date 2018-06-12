@@ -11,8 +11,8 @@ app.get('/contacts', function(req, res) {
     res.render('contacts');
 });
 
-app.get('/timeTable', function(req, res) {
-    res.send('Time table coming soon!');
+app.get('/timetable', function(req, res) {
+    res.render('timetable');
 });
 
 
