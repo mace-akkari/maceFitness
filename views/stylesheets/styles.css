@@ -1,4 +1,20 @@
 html, body {
-    font-family: sans-serif;
-    background-color: aquamarine;
-  }
+  font-family: sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* tr:nth-child(3) {
+  background-color: hotpink
+} */
+
+tr:nth-child(2n+1) td:nth-child(2n+3) {
+  background-color: dodgerblue;
+}
+
+tr:nth-child(2n) td:nth-child(2n) {
+  background-color: dodgerblue;
+}

@@ -12,10 +12,16 @@ app.get('/contacts', function(req, res) {
 });
 
 app.get('/timetable', function(req, res) {
-    res.render('timetable');
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const timetableOptions = {
+        days,
+        openingTime: 6,
+        closingTime: 21
+    };
+    res.render('timetable', timetableOptions);
 });
 
-app.use('views/stylesheets', express.static('stylesheets'));
+app.use('/stylesheets', express.static('views/stylesheets'));
 
 
 app.listen(8080);
