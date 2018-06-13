@@ -15,5 +15,7 @@ app.get('/timetable', function(req, res) {
     res.render('timetable');
 });
 
+app.use('views/stylesheets', express.static('stylesheets'));
+
 
 app.listen(8080);
