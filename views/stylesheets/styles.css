@@ -1,4 +1,9 @@
+
 html, body {
-    font-family: sans-serif;
-    background-color: aquamarine;
-  }
+  font-family: sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
