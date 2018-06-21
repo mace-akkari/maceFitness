@@ -1,13 +1,14 @@
 extends layout.pug
     
 block content
+  - let hours = openingTime;
   table
     tr
-      each day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+      th
+      each day in days
         th= day
-    tr
-    - let hours = 24;
-      while hours > 6 && < 21
-        li= hours++   
-    
-
+      while hours <= closingTime
+        tr
+          td= hours++
+          each day in days
+            td 
