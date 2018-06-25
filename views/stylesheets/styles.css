@@ -9,5 +9,24 @@ html, body {
 
 table {
   table-layout: fixed;
-  width: 100%;
+  width: 98%;
+  margin: 8px;
+}
+
+table th:not(:first-child) {
+  padding: 12px 0px;
+  text-align: center;
+  background-color: lightblue;
+  color: white;
+}
+
+table tr th:first-child {
+  width: 20px;
+}
+
+table td:first-child {
+  padding: 12px 0px;
+  text-align: center;
+  background-color: lightblue;
+  color: white;
 }
