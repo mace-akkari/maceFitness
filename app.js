@@ -4,11 +4,11 @@ const app = express();
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
-    res.render('index');
+    res.render('index', { title: 'Home' });
 });
 
 app.get('/contacts', function(req, res) {
-    res.render('contacts');
+    res.render('contacts', { title: 'Contacts'});
 });
 
 app.get('/timetable', function(req, res) {
@@ -18,7 +18,7 @@ app.get('/timetable', function(req, res) {
         openingTime: 6,
         closingTime: 21
     };
-    res.render('timetable', timetableOptions);
+    res.render('timeTable',/*{ title: 'Timetable'}*/ timetableOptions);
 });
 
 app.use('/stylesheets', express.static('views/stylesheets'));
