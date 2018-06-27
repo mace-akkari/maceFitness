@@ -7,26 +7,32 @@ html, body {
   padding: 5px;
 }
 
-table {
+.classtable {
   table-layout: fixed;
   width: 98%;
   margin: 8px;
 }
 
-table th:not(:first-child) {
+.classtable th:not(:first-child),
+.classtable td:first-child  {
   padding: 12px 0px;
   text-align: center;
   background-color: lightblue;
-  color: white;
+  color: #000;
 }
 
-table tr th:first-child {
+.classtable tr th:first-child {
   width: 20px;
 }
 
-table td:first-child {
-  padding: 12px 0px;
-  text-align: center;
+.classtable td:hover {
   background-color: lightblue;
-  color: white;
+}
+
+.classtable tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.classtable td:not(:first-child) {
+  border: 1px solid black;
 }
