@@ -1,14 +1,16 @@
 extends layout.pug
     
 block content
-  - let hours = openingTime;
   table
     tr
       th
       each day in days
         th= day
-      while hours <= closingTime
-        tr
-          td= hours++
-          each day in days
-            td 
+      - for(let hours = openingTime; hours <= closingTime; hours++) {
+          tr
+            td= hours
+            each dayName, day in days
+              td 
+                - let appointment = appointments.find((appointment) => appointment.time === hours && appointment.day === day)
+                = appointment ? appointment.name : null
+      - }

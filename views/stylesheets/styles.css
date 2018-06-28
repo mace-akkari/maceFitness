@@ -7,3 +7,13 @@ table {
   table-layout: fixed;
   width: 100%;
 }
+
+td:first-child {
+  width: 5%;
+  background-color: rgb(175, 175, 175);
+}
+
+td:nth-child(n+2) {
+  width: auto;
+  background-color: rgb(167, 211, 255);
+}
