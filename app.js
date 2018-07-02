@@ -18,7 +18,7 @@ app.get('/timetable', function(req, res) {
         openingTime: 6,
         closingTime: 21
     };
-    res.render('timeTable',/*{ title: 'Timetable'}*/ timetableOptions);
+    res.render('timeTable', timetableOptions);
 });
 
 app.use('/stylesheets', express.static('views/stylesheets'));
