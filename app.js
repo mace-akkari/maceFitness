@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
+const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
+
+const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 let db;
 mongodb.connect('mongodb://localhost:27017', (err, client) => {
     if(err) {
@@ -19,9 +23,16 @@ app.get('/contacts', function(req, res) {
     res.render('contacts');
 });
 
+app.get('/book', function(req, res) {
+    const options = {
+        days: DAYS
+    }
+    res.render('book', options);
+});
+
 app.get('/timetable', function(req, res) {
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const appointments = db.collection('appointments').find().toArray((err, result) => {;
+    const days = DAYS;
+    db.collection('appointments').find().toArray((err, result) => {
         const timetableOptions = {
             days,
             openingTime: 6,
@@ -34,4 +45,13 @@ app.get('/timetable', function(req, res) {
 
 app.use('/stylesheets', express.static('views/stylesheets'));
 
+const endpoints = Router();
+
+endpoints.get('/api/appointments', (req, res) => {
+    db.collection('appointments').find().toArray((err, result) => {;
+        res.json(result);
+    });
+});
+
+app.use(endpoints);
 app.listen(8080);
