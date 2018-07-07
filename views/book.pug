@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+  h1 Book An Appointment
+  form(action="/book" type="post")
+    label(for="firstname") Enter Name:
+      input(type="text" name="firstname")
+    label(for="day") Day:
+      select(name="day")
+        each dayName, day in days
+          option(value=day) #{dayName}
+    label(for="hour") Time:
+      select(name="hour")
+        option(value="3") 3
+    input(type="submit")
