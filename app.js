@@ -23,6 +23,13 @@ app.get('/contacts', function(req, res) {
     res.render('contacts', { title: 'Contacts'});
 });
 
+app.get('/book', function(req, res) {
+    const options = {
+        days: DAYS
+    }
+    res.render('book', options);
+});
+
 app.get('/timetable', function(req, res) {
     const days = DAYS;
     db.collection('appointments').find().toArray((err, result) => {
