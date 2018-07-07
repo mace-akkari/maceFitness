@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -28,7 +29,8 @@ app.get('/timetable', function(req, res) {
         const timetableOptions = {
             days,
             openingTime: 6,
-            closingTime: 21
+            closingTime: 21,
+            appointments: result
         };
         res.render('timeTable', timetableOptions);
     });
@@ -36,5 +38,13 @@ app.get('/timetable', function(req, res) {
 
 app.use('/stylesheets', express.static('views/stylesheets'));
 
+const endpoints = Router();
 
+endpoints.get('/api/appointments', (req, res) => {
+    db.collection('appointments').find().toArray((err, result) => {;
+        res.json(result);
+    });
+});
+
+app.use(endpoints);
 app.listen(8080);
