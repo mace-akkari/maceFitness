@@ -1,16 +1,16 @@
 extends layout.pug
 
 block content
-  table.classtable
+  table
     tr
       th
       each day in days
         th= day
-        - for(let hours = openingTime; hours <= closingTime; hours++) {
+      - for(let hours = openingTime; hours <= closingTime; hours++) {
             tr
               td= hours
               each dayName, day in days
                 td 
                  - let appointment = appointments.find((appointment) => appointment.time === hours && appointment.day === day)
-                = appointment ? appointment.name : null
-          - }
+                 = appointment ? appointment.name : null
+      - }
