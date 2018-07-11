@@ -8,9 +8,9 @@ block content
         th= day
       - for(let hours = openingTime; hours <= closingTime; hours++) {
             tr
-              td= hours
+              td= hours + ':00'
               each dayName, day in days
                 td 
                  - let appointment = appointments.find((appointment) => appointment.time === hours && appointment.day === day)
                  = appointment ? appointment.name : null
-      - }
+      - } 
