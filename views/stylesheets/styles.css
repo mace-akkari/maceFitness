@@ -1,15 +1,35 @@
 html, body {
   font-family: sans-serif;
+  background: #1d2a33 url('../stylesheets/images/bg.jpg') no-repeat;
+  background-size: cover; 
+  color: white;
+}
+
+/* nav styles */
+
+.nav-class{ 
+  text-align: center;
+  padding: 15px 0px 20px;
+  font-size: 20px;
 }
 
 .nav-class a {
   padding: 5px;
+  color: white;
+  text-decoration: none;
 }
+
+a:hover {
+	color:lightblue;
+}
+
+/* tabble style */
 
 .classtable {
   table-layout: fixed;
   width: 98%;
   margin: 8px;
+  border: 5px solid white;
 }
 
 .classtable th:not(:first-child),
@@ -22,6 +42,7 @@ html, body {
 
 .classtable tr th:first-child {
   width: 20px;
+  background-color: lightblue;
 }
 
 .classtable td:hover {
@@ -32,6 +53,22 @@ html, body {
   background-color: #f2f2f2;
 }
 
+.classtable tr:nth-child(odd){
+  background-color: #e4d2d2;
+}
+
 .classtable td:not(:first-child) {
   border: 1px solid black;
 } 
+
+/* footer styles */
+
+footer {
+  color: navy;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 15px;
+  background-color: white;
+  text-align: center;
+}
