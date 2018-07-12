@@ -6,11 +6,10 @@ block content
       th
       each day in days
         th= day
-      - for(let hours = openingTime; hours <= closingTime; hours++) {
+      each hour in hours
             tr
-              td= hours + ':00'
+              td= hour + ':00'
               each dayName, day in days
                 td 
-                 - let appointment = appointments.find((appointment) => appointment.time === hours && appointment.day === day)
+                 - let appointment = appointments.find((appointment) => appointment.time === hour && appointment.day === day)
                  = appointment ? appointment.name : null
-      - } 

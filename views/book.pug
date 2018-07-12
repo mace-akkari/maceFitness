@@ -11,6 +11,6 @@ block content
           option(value=day) #{dayName}
     label(for="hour") Time:
       select(name="hour")
-        each slot, hour in hours
-          option(value=hour) #{slot}
+        each hour in hours
+          option(value=hour) #{hour}
     input(type="submit")

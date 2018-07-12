@@ -57,11 +57,11 @@ app.post('/book', (req, res) => {
 
 app.get('/timetable', function(req, res) {
     const days = DAYS;
+    const hours = getHours(HOURS.opening, HOURS.closing);
     db.collection('appointments').find().toArray((err, result) => {
         const timetableOptions = {
             days,
-            openingTime: HOURS.opening,
-            closingTime: HOURS.closing,
+            hours,
             appointments: result
         };
         res.render('timeTable', timetableOptions);
