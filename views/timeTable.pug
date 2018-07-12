@@ -12,4 +12,5 @@ block content
               each dayName, day in days
                 td 
                  - let appointment = appointments.find((appointment) => appointment.time === hour && appointment.day === day)
+                 - console.log(appointment)
                  = appointment ? appointment.name : null

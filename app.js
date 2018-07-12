@@ -51,7 +51,7 @@ app.get('/book', function(req, res) {
 
 app.post('/book', (req, res) => {
     console.log(req.body);
-    db.collection('timetable').find().toArray((err, result) => {
+    db.collection('timetable').insert(req.body, (err, result) => {
       if (err) return console.log(err);
       res.send(result);
     });
@@ -64,11 +64,17 @@ app.post('/book', (req, res) => {
 app.get('/timetable', function(req, res) {
     const days = DAYS;
     const hours = getHours(HOURS.opening, HOURS.closing);
-    db.collection('appointments').find().toArray((err, result) => {
+    db.collection('timetable').find().toArray((err, result) => {
+        const appointments = result.map((result) => ({
+            name: result.firstname,
+            time: +result.hour,
+            day: +result.day
+        }))
+        console.log(appointments)
         const timetableOptions = {
             days,
             hours,
-            appointments: result
+            appointments
         };
         res.render('timeTable', timetableOptions);
     });
