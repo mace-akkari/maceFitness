@@ -10,7 +10,7 @@ mongodb.connect('mongodb://localhost:27017', (err, client) => {
     if(err) {
         console.error(err);
     } 
-    db = client.db('mace');
+    db = client.db('timetable');
 })
 
 app.set('view engine', 'pug');
@@ -25,10 +25,22 @@ app.get('/contacts', function(req, res) {
 
 app.get('/book', function(req, res) {
     const options = {
+        hours,
         days: DAYS
-    }
+    } 
     res.render('book', options);
 });
+
+app.post('/book', (req, res) => {
+    db.collection('timetable').find().toArray((err, result) => {
+      if (err) return console.log(err);
+      res.send(result);
+    });
+  });
+
+// app.post('/book', function(req, res){
+
+// });
 
 app.get('/timetable', function(req, res) {
     const days = DAYS;
@@ -48,7 +60,7 @@ app.use('/stylesheets', express.static('views/stylesheets'));
 const endpoints = Router();
 
 endpoints.get('/api/appointments', (req, res) => {
-    db.collection('appointments').find().toArray((err, result) => {;
+    db.collection('timetable').find().toArray((err, result) => {;
         res.json(result);
     });
 });
