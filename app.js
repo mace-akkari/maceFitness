@@ -4,6 +4,18 @@ const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const HOURS = {
+    opening: 6,
+    closing: 21
+};
+
+function getHours(opening, closing) {
+   const hours = [];
+   for(let i = opening; i <= closing; i++) {
+       hours.push(i)
+   }
+   return hours;
+}
 
 let db;
 mongodb.connect('mongodb://localhost:27017', (err, client) => {
@@ -24,6 +36,7 @@ app.get('/contacts', function(req, res) {
 });
 
 app.get('/book', function(req, res) {
+    const hours = getHours(HOURS.opening, HOURS.closing)
     const options = {
         hours,
         days: DAYS
@@ -47,8 +60,8 @@ app.get('/timetable', function(req, res) {
     db.collection('appointments').find().toArray((err, result) => {
         const timetableOptions = {
             days,
-            openingTime: 6,
-            closingTime: 21,
+            openingTime: HOURS.opening,
+            closingTime: HOURS.closing,
             appointments: result
         };
         res.render('timeTable', timetableOptions);
