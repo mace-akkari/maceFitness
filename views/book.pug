@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   h1 Book An Appointment
-  form(action="/book" type="post")
+  form(action="/book" method="post")
     label(for="firstname") Enter Name:
       input(type="text" name="firstname")
     label(for="day") Day:

@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
@@ -8,6 +9,8 @@ const HOURS = {
     opening: 6,
     closing: 21
 };
+
+// CRUD 
 
 function getHours(opening, closing) {
    const hours = [];
@@ -24,6 +27,8 @@ mongodb.connect('mongodb://localhost:27017', (err, client) => {
     } 
     db = client.db('timetable');
 })
+
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.set('view engine', 'pug');
 
@@ -45,6 +50,7 @@ app.get('/book', function(req, res) {
 });
 
 app.post('/book', (req, res) => {
+    console.log(req.body);
     db.collection('timetable').find().toArray((err, result) => {
       if (err) return console.log(err);
       res.send(result);
