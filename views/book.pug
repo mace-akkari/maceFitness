@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   h1 Book An Appointment
-  form(action="/book" type="post")
+  form(action="/book" method="post")
     label(for="firstname") Enter Name:
       input(type="text" name="firstname")
     label(for="day") Day:
@@ -11,6 +11,6 @@ block content
           option(value=day) #{dayName}
     label(for="hour") Time:
       select(name="hour")
-        each slot, hour in hours
-          option(value=hour) #{slot}
+        each hour in hours
+          option(value=hour) #{hour}
     input(type="submit")
