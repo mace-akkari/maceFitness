@@ -3,8 +3,8 @@ extends layout.pug
 block content
   h1 Book An Appointment
   form(action="/book" method="post")
-    label(for="firstname") Enter Name:
-      input(type="text" name="firstname")
+    label(for="firstname") Class Name:
+      input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
     label(for="day") Day:
       select(name="day")
         each dayName, day in days
@@ -13,4 +13,4 @@ block content
       select(name="hour")
         each hour in hours
           option(value=hour) #{hour}
-    input(type="submit")
+    button(type="submit") Book class
