@@ -1,9 +1,24 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const HOURS = {
+    opening: 6,
+    closing: 21
+};
+
+
+
+function getHours(opening, closing) {
+    const hours = [];
+    for(let i = opening; i <= closing; i++) {
+        hours.push(i)
+    }
+    return hours;
+ }
 
 let db;
 mongodb.connect('mongodb://localhost:27017', (err, client) => {
@@ -12,6 +27,8 @@ mongodb.connect('mongodb://localhost:27017', (err, client) => {
     } 
     db = client.db('timetable');
 })
+
+app.use(bodyParser.urlencoded({ extended: true}));
 
 app.set('view engine', 'pug');
 
@@ -24,6 +41,7 @@ app.get('/contacts', function(req, res) {
 });
 
 app.get('/book', function(req, res) {
+    const hours = getHours(HOURS.opening, HOURS.closing)
     const options = {
         hours,
         days: DAYS
@@ -32,24 +50,28 @@ app.get('/book', function(req, res) {
 });
 
 app.post('/book', (req, res) => {
-    db.collection('timetable').find().toArray((err, result) => {
+    console.log(req.body);
+    db.collection('timetable').insert(req.body, (err, result) => {
       if (err) return console.log(err);
       res.send(result);
     });
   });
 
-// app.post('/book', function(req, res){
 
-// });
-
-app.get('/timetable', function(req, res) {
+  app.get('/timetable', function(req, res) {
     const days = DAYS;
-    db.collection('appointments').find().toArray((err, result) => {
+    const hours = getHours(HOURS.opening, HOURS.closing);
+    db.collection('timetable').find().toArray((err, result) => {
+        const appointments = result.map((result) => ({
+            name: result.firstname,
+            time: +result.hour,
+            day: +result.day
+        }))
+        console.log(appointments)
         const timetableOptions = {
             days,
-            openingTime: 6,
-            closingTime: 21,
-            appointments: result
+            hours,
+            appointments
         };
         res.render('timeTable', timetableOptions);
     });
