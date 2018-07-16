@@ -36,6 +36,14 @@ app.get('/', function(req, res) {
     res.render('index', { title: 'Home' });
 });
 
+app.get('/login', function(req, res) {
+    res.render('login', {title: 'Log In'});
+});
+
+app.post('/login', function(req, res){
+    res.send('Logged In!')
+});
+
 app.get('/contacts', function(req, res) {
     res.render('contacts', { title: 'Contacts'});
 });
