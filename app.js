@@ -9,6 +9,7 @@ const HOURS = {
     opening: 6,
     closing: 21
 };
+const errMsg = ('All fields required.');
 
 
 
@@ -32,16 +33,21 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.set('view engine', 'pug');
 
+// home page
 app.get('/', function(req, res) {
     res.render('index', { title: 'Home' });
 });
-
+// Log in
 app.get('/login', function(req, res) {
     res.render('login', {title: 'Log In'});
 });
 
 app.post('/login', function(req, res){
-    res.send('Logged In!')
+    if (req.body.email && req.body.password){
+        return res.send('Logged In !!')
+    } else {
+        return res.send(errMsg);
+    }
 });
 
 app.get('/contacts', function(req, res) {
@@ -58,13 +64,15 @@ app.get('/book', function(req, res) {
 });
 
 app.post('/book', (req, res) => {
-    console.log(req.body);
+    const appBooked = `Confirmed booking of ${req.body.firstname}`;
     db.collection('timetable').insert(req.body, (err, result) => {
-      if (err) return console.log(err);
-      res.send(result);
-    });
+      if (! req.body.firstname ) {
+        return errMsg;
+      } else {
+          alert('booked')
+          return res.redirect('/timetable',  /*appBooked*/);
+    }});
   });
-
 
   app.get('/timetable', function(req, res) {
     const days = DAYS;
@@ -75,7 +83,6 @@ app.post('/book', (req, res) => {
             time: +result.hour,
             day: +result.day
         }))
-        console.log(appointments)
         const timetableOptions = {
             days,
             hours,
