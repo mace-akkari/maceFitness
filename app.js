@@ -64,15 +64,15 @@ app.get('/book', function(req, res) {
 });
 
 app.post('/book', (req, res) => {
-    const appBooked = `Confirmed booking of ${req.body.firstname}`;
+    let fieldName = req.body.firstname;
+    //const appBooked = `Confirmed booking of ${fieldName}`;
     db.collection('timetable').insert(req.body, (err, result) => {
-      if (! req.body.firstname ) {
-        return errMsg;
-      } else {
-          alert('booked')
-          return res.redirect('/timetable',  /*appBooked*/);
-    }});
-  });
+        if (! fieldName ) {
+            return errMsg
+        } else {
+            return res.redirect('timetable'/*,  appBooked*/);
+        }});
+    });
 
   app.get('/timetable', function(req, res) {
     const days = DAYS;
