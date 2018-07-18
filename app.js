@@ -68,11 +68,25 @@ app.post('/book', (req, res) => {
     //const appBooked = `Confirmed booking of ${fieldName}`;
     db.collection('timetable').insert(req.body, (err, result) => {
         if (! fieldName ) {
-            return errMsg
+            return errMsg 
         } else {
             return res.redirect('timetable'/*,  appBooked*/);
         }});
     });
+
+   /* app.put('/book/:firstname', function(req, res) {
+
+        let field = req.body;
+
+        timetable.update(
+            { name: req.body.firstname },
+            { name: field.firstname, day: field.day, hour: field.hour },
+            function(err) {
+                res.redirect('/book/'+field.name);
+            });
+    })*/
+
+   // db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)
 
   app.get('/timetable', function(req, res) {
     const days = DAYS;
