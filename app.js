@@ -37,6 +37,11 @@ app.set('view engine', 'pug');
 app.get('/', function(req, res) {
     res.render('index', { title: 'Home' });
 });
+
+app.get('/er-ror', function(req, res) {
+    res.render('er-ror', { title: 'AGGGHHH'});
+});
+
 // Log in
 app.get('/login', function(req, res) {
     res.render('login', {title: 'Log In'});
@@ -46,7 +51,9 @@ app.post('/login', function(req, res){
     if (req.body.email && req.body.password){
         return res.send('Logged In !!')
     } else {
-        return res.send(errMsg);
+        return res.send(errMsg)
+        //res.redirect('er-ror');
+         
     }
 });
 
@@ -63,6 +70,7 @@ app.get('/book', function(req, res) {
     res.render('book', options);
 });
 
+// HALF WORKING
 app.post('/book', (req, res) => {
     let fieldName = req.body.firstname;
     //const appBooked = `Confirmed booking of ${fieldName}`;
