@@ -11,8 +11,6 @@ const HOURS = {
 };
 const errMsg = ('All fields required.');
 
-
-
 function getHours(opening, closing) {
     const hours = [];
     for(let i = opening; i <= closing; i++) {
@@ -38,8 +36,8 @@ app.get('/', function(req, res) {
     res.render('index', { title: 'Home' });
 });
 
-app.get('/er-ror', function(req, res) {
-    res.render('er-ror', { title: 'AGGGHHH'});
+app.get('/error', function(req, res) {
+    res.render('error', { title: 'AGGGHHH'});
 });
 
 // Log in
@@ -51,9 +49,7 @@ app.post('/login', function(req, res){
     if (req.body.email && req.body.password){
         return res.send('Logged In !!')
     } else {
-        return res.send(errMsg)
-        //res.redirect('er-ror');
-         
+        return res.send(errMsg);
     }
 });
 
@@ -70,31 +66,28 @@ app.get('/book', function(req, res) {
     res.render('book', options);
 });
 
-// HALF WORKING
-app.post('/book', (req, res) => {
+app.post('/appointment/create', (req, res) => {
     let fieldName = req.body.firstname;
-    //const appBooked = `Confirmed booking of ${fieldName}`;
-    db.collection('timetable').insert(req.body, (err, result) => {
-        if (! fieldName ) {
-            return errMsg 
-        } else {
-            return res.redirect('timetable'/*,  appBooked*/);
-        }});
-    });
+    const appBooked = `Confirmed booking of ${fieldName}`;
+    db.collection('timetable').update({
+        hour: req.body.hour,
+        day: req.body.day
+    }, {
+        firstname: req.body.firstname,
+        hour: req.body.hour,
+        day: req.body.day
+    }, {
+        upsert: true
+    },
+    () => res.redirect(301, '/timetable'));
+});
 
-   /* app.put('/book/:firstname', function(req, res) {
-
-        let field = req.body;
-
-        timetable.update(
-            { name: req.body.firstname },
-            { name: field.firstname, day: field.day, hour: field.hour },
-            function(err) {
-                res.redirect('/book/'+field.name);
-            });
-    })*/
-
-   // db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)
+app.post('/appointment/delete', (req, res) => {
+    db.collection('timetable').deleteMany({
+        hour: req.body.hour,
+        day: req.body.day
+    }, () => res.redirect(301, '/timetable'))
+});
 
   app.get('/timetable', function(req, res) {
     const days = DAYS;
