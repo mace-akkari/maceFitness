@@ -67,8 +67,6 @@ app.get('/book', function(req, res) {
 });
 
 app.post('/appointment/create', (req, res) => {
-    let fieldName = req.body.firstname;
-    const appBooked = `Confirmed booking of ${fieldName}`;
     db.collection('timetable').update({
         hour: req.body.hour,
         day: req.body.day
