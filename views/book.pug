@@ -2,36 +2,36 @@ extends layout.pug
 
 block content
   .book-class
-  h1 Book An Appointment
-  form(action="/book" method="post")
-    label(for="firstname") Class Name:
-      input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
-    label(for="day") Day:
-      select(name="day")
-        each dayName, day in days
-          option(value=day) #{dayName}
-    label(for="hour") Time:
-      select(name="hour")
-        each hour in hours
-          option(value=hour) #{hour}
-    button(type="submit") Book class
-      -console.log('class booked')
-  br
-  br
-  br
+    h1 Book An Appointment
+    form(action="/appointment/create" method="post")
+      label(for="firstname") Class Name:
+        input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
+      label(for="day") Day:
+        select(name="day")
+          each dayName, day in days
+            option(value=day) #{dayName}
+      label(for="hour") Time:
+        select(name="hour")
+          each hour in hours
+            option(value=hour) #{hour}
+      button(type="submit") Book class
+
 
   .delete-class
-  h1 Delete Appointment
-  form(action="/book" method="put")
-    label(for="firstname") Class Name:
-      input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
-    label(for="day") Day:
-      select(name="day")
-        each dayName, day in days
-          option(value=day) #{dayName}
-    label(for="hour") Time:
-      select(name="hour")
-        each hour in hours
-          option(value=hour) #{hour}
-    button(type="submit") Remove class
-      - console.log('hello')
+    h1 Delete Appointment
+    form(action="/appointment/delete" method="post")
+      label(for="day") Day:
+        select(name="day")
+          each dayName, day in days
+            option(value=day) #{dayName}
+      label(for="hour") Time:
+        select(name="hour")
+          each hour in hours
+            option(value=hour) #{hour}
+      button(type="submit") Remove class
+
+block scripts
+  script.
+    document.querySelector('.delete-class button').addEventListener('click', () => {
+      console.log('hello 2')
+    });
