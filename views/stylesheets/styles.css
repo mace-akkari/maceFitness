@@ -2,8 +2,9 @@ html, body {
   font-family: sans-serif;
   background: #1d2a33 url('../stylesheets/images/bg.jpg') no-repeat;
   background-size: cover; 
-  color: white;
   height: 100%;
+  margin: 0;
+  color: white;
 }
 
 * {
@@ -21,23 +22,34 @@ html, body {
 .nav-header {
   font-size: 50px;
   text-align: center;
-  color: white;
   background-color: lightblue;
+  margin-top: 0;
+}
+
+.nav-header a {
+  color: white;
+}
+
+.nav-header a:hover {
+  color: black;
 }
 
 .nav-class{ 
+  background-color: lightgray;
   text-align: center;
   padding: 15px 0px 20px;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .nav-class a {
   padding: 5px;
-  color: white;
 }
 
-a:hover {
-	color:lightblue;
+.nav-class a:hover {
+  color: white;
+  padding-bottom: 15px;
+  border-bottom: 5px solid black;
 }
 
 /* tabble style */
