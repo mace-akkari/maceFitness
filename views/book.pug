@@ -5,13 +5,13 @@ block content
     h1 Book An Appointment
     form(action="/appointment/create" method="post")
       label(for="firstname") Class Name:
-        input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
+        input.form-space(type="text" placeholder='e.g. "Boxing"'  name="firstname")
       label(for="day") Day:
-        select(name="day")
+        select.form-space(name="day")
           each dayName, day in days
             option(value=day) #{dayName}
       label(for="hour") Time:
-        select(name="hour")
+        select.form-space(name="hour")
           each hour in hours
             option(value=hour) #{hour}
       button(type="submit") Book class
@@ -21,11 +21,11 @@ block content
     h1 Delete Appointment
     form(action="/appointment/delete" method="post")
       label(for="day") Day:
-        select(name="day")
+        select.form-space(name="day")
           each dayName, day in days
             option(value=day) #{dayName}
       label(for="hour") Time:
-        select(name="hour")
+        select.form-space(name="hour")
           each hour in hours
             option(value=hour) #{hour}
       button(type="submit") Remove class
