@@ -15,6 +15,7 @@ html, body {
  .wrapper{
    min-height: 100%;
    position: relative;
+   margin: 5px 15px;
  }
 
 /* nav styles */
@@ -34,16 +35,15 @@ html, body {
   color: black;
 }
 
-.nav-class{ 
+.nav-class { 
   background-color: lightgray;
-  text-align: center;
   padding: 15px 0px 20px;
   font-size: 20px;
   margin-bottom: 20px;
 }
 
 .nav-class a {
-  padding: 5px;
+  padding: 15px;
 }
 
 .nav-class a:hover {
@@ -52,6 +52,10 @@ html, body {
   border-bottom: 5px solid black;
 }
 
+.log-in{
+  float:right;
+}
+ 
 /* tabble style */
 
 .classtable {
@@ -61,6 +65,7 @@ html, body {
   border: 5px solid white;
   color: #000;
   font-size: 16px;
+  text-align: center;
 }
 
 .classtable th:not(:first-child),
@@ -92,16 +97,25 @@ html, body {
   border: 1px solid black;
 } 
 
+/* booking page */
+
+.book-class{
+  margin-bottom: 100px;
+}
+
+.form-space{
+  margin-right: 40px;
+}
+
 /* footer styles */
 
 .footer {
   color: navy;
   width: 100%;
-  clear: both;
   position: relative;
   bottom: 0;
   background-color: white;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .footer p {
