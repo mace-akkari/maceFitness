@@ -19,40 +19,43 @@ html, body {
  }
 
 /* nav styles */
-
-.nav-heading {
-  font-size: 50px;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 0;
-}
-
-.nav-heading a {
+header a {
   color: white;
 }
 
-.nav-heading a:hover {
+header a:hover {
   color: black;
+}
+
+h1 {
+  text-align: center;
+  background-color: lightblue;
+  margin: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-class { 
   background-color: lightgray;
-  padding: 15px 0px 20px;
   font-size: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.nav-class a {
-  padding: 15px;
+nav-item a {
+  display: block;
+  padding: 18px;
 }
-
-.nav-class a:hover {
+nav-item a:hover {
   color: white;
-  border-bottom: 5px solid black;
+  /* border-bottom: 5px solid black; */
 }
 
 .log-in {
-  float:right;
+
 }
  
 /* tabble style */
