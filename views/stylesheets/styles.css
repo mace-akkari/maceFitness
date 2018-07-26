@@ -20,18 +20,18 @@ html, body {
 
 /* nav styles */
 
-.nav-header {
+.nav-heading {
   font-size: 50px;
   text-align: center;
   background-color: lightblue;
   margin-top: 0;
 }
 
-.nav-header a {
+.nav-heading a {
   color: white;
 }
 
-.nav-header a:hover {
+.nav-heading a:hover {
   color: black;
 }
 
@@ -48,11 +48,10 @@ html, body {
 
 .nav-class a:hover {
   color: white;
-  padding-bottom: 15px;
   border-bottom: 5px solid black;
 }
 
-.log-in{
+.log-in {
   float:right;
 }
  
