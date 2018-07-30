@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
   .book-class
-    h1 Book An Appointment
+    h2 Book An Appointment
     form(action="/appointment/create" method="post")
       label(for="firstname") Class Name:
         input.form-space(type="text" placeholder='e.g. "Boxing"'  name="firstname")
@@ -18,7 +18,7 @@ block content
 
 
   .delete-class
-    h1 Delete Appointment
+    h2 Delete Appointment
     form(action="/appointment/delete" method="post")
       label(for="day") Day:
         select.form-space(name="day")
