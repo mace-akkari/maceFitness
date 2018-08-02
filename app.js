@@ -36,8 +36,8 @@ app.get('/', function(req, res) {
     res.render('index', { title: 'Home' });
 });
 
-app.get('/er-ror', function(req, res) {
-    res.render('er-ror', { title: 'AGGGHHH'});
+app.get('/error', function(req, res) {
+    res.render('error', { title: 'AGGGHHH'});
 });
 
 // Log in
@@ -49,7 +49,7 @@ app.post('/login', function(req, res){
     if (req.body.email && req.body.password){
         return res.send('Logged In !!')
     } else {
-        return res.send(errMsg)
+        return res.render('error', { title: 'AGGGHHH'})
     }
 });
 
