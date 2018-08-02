@@ -2,10 +2,11 @@ extends layout.pug
 
 block content
   h2 Log In
-  form(action='/login' method='POST')
-    label(for='email') Email:
-      input.form-space(type='text' id='email' placeholder='email' name='email')
-    label(for='password') Password:
-      input.form-space(type='password' id='password' placeholder='password' name='password')
-    button(type='submit') Log in        
+  .form-block
+    form.move(action='/login' method='POST')
+      label.form1(for='email') Email:
+        input(type='text' id='email' placeholder='email' name='email')
+      label.form1(for='password') Password:
+        input(type='password' id='password' placeholder='password' name='password')
+      button.form1.button1(type='submit') Log in        
 
