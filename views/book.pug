@@ -1,34 +1,35 @@
 extends layout.pug
 
 block content
-  .book-class
-    h2 Book An Appointment
-    form(action="/appointment/create" method="post")
-      label(for="firstname") Class Name:
-        input.form-space(type="text" placeholder='e.g. "Boxing"'  name="firstname")
-      label(for="day") Day:
-        select.form-space(name="day")
-          each dayName, day in days
-            option(value=day) #{dayName}
-      label(for="hour") Time:
-        select.form-space(name="hour")
-          each hour in hours
-            option(value=hour) #{hour}
-      button(type="submit") Book class
+  h2 Book An Appointment
+  .form-block
+    form.move(action="/appointment/create" method="post")
+        label.form-space(for="firstname") Class Name:
+          input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
+        label.form-space(for="day") Day:
+          select(name="day")
+            each dayName, day in days
+              option(value=day) #{dayName}
+        lable.form-space(for="hour") Time:
+          select(name="hour")
+            each hour in hours
+              option(value=hour) #{hour}
+        button.form-space(type="submit") Book class
 
 
-  .delete-class
-    h2 Delete Appointment
-    form(action="/appointment/delete" method="post")
-      label(for="day") Day:
-        select.form-space(name="day")
+  
+  h2 Delete Appointment
+  .form-block
+    form.move(action="/appointment/delete" method="post")
+      label.form-space(for="day") Day:
+        select(name="day")
           each dayName, day in days
             option(value=day) #{dayName}
-      label(for="hour") Time:
-        select.form-space(name="hour")
+      label.form-space(for="hour") Time:
+        select(name="hour")
           each hour in hours
             option(value=hour) #{hour}
-      button(type="submit") Remove class
+      button.form-space(type="submit") Remove class
 
 block scripts
   script.
