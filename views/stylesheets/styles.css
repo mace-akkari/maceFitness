@@ -1,7 +1,7 @@
 html, body {
   font-family: sans-serif;
   background: #1d2a33 url('../stylesheets/images/bg.jpg') no-repeat;
-  background-size: cover; 
+  background-size: cover;
   height: 100%;
   margin: 0;
   color: white;
@@ -15,45 +15,51 @@ html, body {
  .wrapper{
    min-height: 100%;
    position: relative;
-   margin: 5px 15px;
+   margin: 30px 10px;
  }
 
 /* nav styles */
 
-.nav-heading {
-  font-size: 50px;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 0;
-}
-
-.nav-heading a {
+header a {
   color: white;
 }
 
-.nav-heading a:hover {
+header a:hover {
   color: black;
+}
+
+h1 {
+  text-align: center;
+  background-color: lightblue;
+  margin: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-class { 
   background-color: lightgray;
   padding: 15px 0px 20px;
   font-size: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.nav-class a {
+nav-item a {
+  display: inline-block;
   padding: 15px;
-}
-
-.nav-class a:hover {
   color: white;
-  border-bottom: 5px solid black;
 }
 
-.log-in {
-  float:right;
+nav-item a:hover {
+  color: black;
 }
+
+nav-item a:last-child{
+  justify-content: flex-end;
+}
+
  
 /* tabble style */
 
@@ -98,17 +104,38 @@ html, body {
 
 /* booking page */
 
-.book-class{
-  margin-bottom: 100px;
+.form-block{
+  display: flex; 
 }
 
+.move {
+  border: 5px dotted black;
+  border-width: auto;
+  display: block;
+}
+
+
 .form-space{
-  margin-right: 40px;
+  padding: 10px;
+  display: block;
+  color: red;
+}
+
+/* login */
+.form1{
+  color: red;
+  display: block;
+  padding: 4px;
+}
+
+.button1{
+  margin: auto;
+  color: blue;
 }
 
 /* footer styles */
 
-.footer {
+footer {
   color: navy;
   width: 100%;
   position: relative;
@@ -117,7 +144,12 @@ html, body {
   margin-top: 20px;
 }
 
-.footer p {
-  text-align: center;
-  padding: 15px;
+footer ul {
+  text-align: center; 
+  margin: 0;
+  list-style-type: none;
+}
+
+footer ul li {
+  padding: 2.5px 0;
 }
