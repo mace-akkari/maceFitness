@@ -52,11 +52,26 @@ app.post('/login', function(req, res){
         return res.render('error', { title: 'AGGGHHH'})
     }
 });
+//  contacts 
+// app.get('/contacts', function(req, res) {
+//     res.render('contacts', { title: 'Contacts'});
+// });
 
-app.get('/contacts', function(req, res) {
-    res.render('contacts', { title: 'Contacts'});
+app.get('/contacts', function (req, res) {
+    const contactinfo = db.collection('contacts')
+    // db.collection('contactinfo').find().pretty((err, result) => {;
+    //     res.json(result);
+    // });
+    db.collection('contacts').find().toArray((err, result) => {
+        const contactDetails = result.map((result) => ({
+            name: result.Name,
+            lastName: result.Surname,
+            phone: +result.Number
+        }))
+        res.render('contacts', contactDetails );
 });
 
+//bookings
 app.get('/book', function(req, res) {
     const hours = getHours(HOURS.opening, HOURS.closing)
     const options = {
