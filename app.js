@@ -1,23 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const Router = express.Router;
 const mongodb = require('mongodb').MongoClient;
+
+const endpoints = require('./routes/api');
+const pages = require('./routes/pages');
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const HOURS = {
     opening: 6,
     closing: 21
 };
-const errMsg = ('All fields required.');
 
-function getHours(opening, closing) {
-    const hours = [];
-    for(let i = opening; i <= closing; i++) {
-        hours.push(i)
-    }
-    return hours;
- }
+app.locals.days = DAYS;
+app.locals.hours = HOURS;
 
 let db;
 mongodb.connect('mongodb://localhost:27017', (err, client) => {
@@ -25,7 +21,8 @@ mongodb.connect('mongodb://localhost:27017', (err, client) => {
         console.error(err);
     } 
     db = client.db('timetable');
-})
+    app.locals.db = db;
+});
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
@@ -52,83 +49,9 @@ app.post('/login', function(req, res){
         return res.render('error', { title: 'AGGGHHH'})
     }
 });
-//  contacts 
-// app.get('/contacts', function(req, res) {
-//     res.render('contacts', { title: 'Contacts'});
-// });
-
-app.get('/contacts', function (req, res) {
-    const contactinfo = db.collection('contacts')
-    // db.collection('contactinfo').find().pretty((err, result) => {;
-    //     res.json(result);
-    // });
-    db.collection('contacts').find().toArray((err, result) => {
-        const contactDetails = result.map((result) => ({
-            name: result.Name,
-            lastName: result.Surname,
-            phone: +result.Number
-        }))
-        res.render('contacts', contactDetails );
-});
-
-//bookings
-app.get('/book', function(req, res) {
-    const hours = getHours(HOURS.opening, HOURS.closing)
-    const options = {
-        hours,
-        days: DAYS
-    } 
-    res.render('book', options);
-});
-
-app.post('/appointment/create', (req, res) => {
-    db.collection('timetable').update({
-        hour: req.body.hour,
-        day: req.body.day
-    }, {
-        firstname: req.body.firstname,
-        hour: req.body.hour,
-        day: req.body.day
-    }, {
-        upsert: true
-    },
-    () => res.redirect(301, '/timetable'));
-});
-
-app.post('/appointment/delete', (req, res) => {
-    db.collection('timetable').deleteMany({
-        hour: req.body.hour,
-        day: req.body.day
-    }, () => res.redirect(301, '/timetable'))
-});
-
-  app.get('/timetable', function(req, res) {
-    const days = DAYS;
-    const hours = getHours(HOURS.opening, HOURS.closing);
-    db.collection('timetable').find().toArray((err, result) => {
-        const appointments = result.map((result) => ({
-            name: result.firstname,
-            time: +result.hour,
-            day: +result.day
-        }))
-        const timetableOptions = {
-            days,
-            hours,
-            appointments
-        };
-        res.render('timeTable', timetableOptions);
-    });
-});
 
 app.use('/stylesheets', express.static('views/stylesheets'));
-
-const endpoints = Router();
-
-endpoints.get('/api/appointments', (req, res) => {
-    db.collection('timetable').find().toArray((err, result) => {;
-        res.json(result);
-    });
-});
-
 app.use(endpoints);
+app.use(pages);
+
 app.listen(8080);
