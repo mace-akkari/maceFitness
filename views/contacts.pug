@@ -2,3 +2,8 @@ extends layout.pug
 
 block content 
     h2 Contacts
+      table
+        tr
+          th
+          each contact in contactinfo
+            td= contact
