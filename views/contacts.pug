@@ -2,8 +2,6 @@ extends layout.pug
 
 block content 
     h2 Contacts
-      table
-        tr
-          th
-          each contact in contacts
-            td= contact.lastName
+      ul
+        each contact in contacts
+          li= `${contact.name} ${contact.lastName} Tel: ${contact.phone}`
