@@ -20,3 +20,4 @@ async function getContacts() {
     renderContactList('.contacts', contacts);
   });
   
+  
