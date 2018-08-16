@@ -20,7 +20,7 @@ mongodb.connect('mongodb://localhost:27017', (err, client) => {
     if(err) {
         console.error(err);
     } 
-    db = client.db('timetable');
+    db = client.db('macefitness');
     app.locals.db = db;
 });
 
@@ -51,6 +51,7 @@ app.post('/login', function(req, res){
 });
 
 app.use('/stylesheets', express.static('views/stylesheets'));
+app.use('/scripts', express.static('views/scripts'));
 app.use(endpoints);
 app.use(pages);
 
