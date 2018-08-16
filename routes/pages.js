@@ -24,6 +24,10 @@ pages.get('/contacts', function (req, res) {
   });
 });
 
+pages.get('/contactsajax', function (req, res) {
+    res.render('contactsajax'); 
+});
+
 pages.post('/appointment/create', (req, res) => {
   const { db } = req.app.locals;
   db.collection('timetable').update({
