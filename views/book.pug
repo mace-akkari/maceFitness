@@ -5,13 +5,13 @@ block content
   .form-block
     form.move(action="/appointment/create" method="post")
         label.form-space(for="firstname") Class Name:
-          input(type="text" placeholder='e.g. "Boxing"'  name="firstname")
+          input.form-button(type="text" placeholder='e.g. "Boxing"'  name="firstname")
         label.form-space(for="day") Day:
-          select(name="day")
+          select.form-button(name="day")
             each dayName, day in days
               option(value=day) #{dayName}
         lable.form-space(for="hour") Time:
-          select(name="hour")
+          select.form-button(name="hour")
             each hour in hours
               option(value=hour) #{hour}
         button.form-space(type="submit") Book class
@@ -22,11 +22,11 @@ block content
   .form-block
     form.move(action="/appointment/delete" method="post")
       label.form-space(for="day") Day:
-        select(name="day")
+        select.form-button(name="day")
           each dayName, day in days
             option(value=day) #{dayName}
       label.form-space(for="hour") Time:
-        select(name="hour")
+        select.form-button(name="hour")
           each hour in hours
             option(value=hour) #{hour}
       button.form-space(type="submit") Remove class
