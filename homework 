@@ -1,0 +1,88 @@
+mongo cli
+
+router()
+
+ajax
+forms 
+
+hoisting 
+
+crud
+body paser
+
+=========================================
+make a confirmation page 
+=========================================
+
+.nav-header {
+  font-size: 50px;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 0;
+}
+
+.nav-header a {
+  color: white;
+}
+
+.nav-header a:hover {
+  color: black;
+}
+
+.nav-class{ 
+  background-color: lightgray;
+  text-align: center;
+  padding: 15px 0px 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-class a {
+  padding: 5px;
+}
+
+.nav-class a:hover {
+  color: white;
+  padding-bottom: 15px;
+  border-bottom: 5px solid black;
+}
+
+.nav-class a:active {
+  color: #000;
+};
+------------------------------------------------------------------
+
+
+ajax ----- 
+
+-------------------------------------------
+
+if null or undifind return something contacts page
+
+css overflow  √√√√√√
+
+webapack - portfolio √√√√√√
+
+mongo - portfolio √√√√√√
+
+.svg logo  √√√√√√
+
+put dist into git ignore √√√√√√
+
+rm -rf dist from github √√√√√√
+
+put a webapack development server √√√√√√ ?????????????
+
+also remove dist from crytpto site ?????????
+
+fix the no repeat background of crytpto ????????????
+
+------------------------------------------------------
+
+check the ajax from crytpto √√√√√√
+macefitness - read the code
+
+AJAX 
+--------------------------------------
+portfolio --- fix webpack 
+--------------------------------------
