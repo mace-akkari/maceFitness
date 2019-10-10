@@ -16,7 +16,7 @@ app.locals.days = DAYS;
 app.locals.hours = HOURS;
 
 let db;
-mongodb.connect('mongodb://localhost:27017', (err, client) => {
+mongodb.connect('mongodb://localhost:27017',{ useNewUrlParser: true }, (err, client) => {
     if(err) {
         console.error(err);
     } 
