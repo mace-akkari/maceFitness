@@ -18,7 +18,8 @@ pages.get('/contacts', function (req, res) {
       const contacts = result.map((result) => ({
           name: result.name,
           lastName: result.surname,
-          phone: +result.number
+          phone: result.number,
+          email: result.email
       }));
       res.render('contacts', { contacts });
   });
