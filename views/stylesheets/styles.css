@@ -5,18 +5,23 @@ html, body {
   height: 100%;
   margin: 0;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 * {
   box-sizing: border-box;
   text-decoration: none;
+  list-style-type: none;
  }
 
  .wrapper{
    min-height: 100%;
    position: relative;
    margin: 30px 10px;
+ }
+
+ .center-header {
+  text-align: center;
  }
 
 /* nav styles */
@@ -132,6 +137,7 @@ nav-item a:last-child{
 
 ::placeholder {
   color: red;
+  opacity: .5;
 }
 
 /* login */
@@ -139,12 +145,17 @@ nav-item a:last-child{
   color: red;
   display: block;
   padding: 4px;
+  font-size: 35px;
 }
 
-.button1{
+
+ .button1{
   margin: auto;
-  color: blue;
+  margin-top: 10px;
+  color: blue; 
 }
+
+
 
 /* footer styles */
 
